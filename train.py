@@ -18,6 +18,9 @@ def set_global_seed(seed: int):
 
 
 def train_part_1(model, n, k, train_dataloader, num_epochs, device):
+    # Assert a sufficient number of epochs
+    assert(num_epochs[0] >= 300)
+    
     # Make an array of time points
     time_array = torch.linspace(0.5, 700, 1400, device=device)
     
