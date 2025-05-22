@@ -54,6 +54,53 @@ loss_ls = evaluate_model(model)
 
 A few loss lists with this time array are given in the `scoring_losses` folder, named by the convention `numbers_{seed}.txt` format. For the seeded models not given in pre-trained models, one can retrain them using the training code provided above.
 
+# Generate diffusion samples
+
+The function to generate diffusion samples is `generation` in the file `generation.py`. To generate samples using a pre-trained model and make a corresponding histogram, please see for instance
+
+<pre>
+model = TestMPNN_3(k, hidden_dim_1=32, hidden_dim_2=16, hidden_dim_3=4, num_layers=10)
+model.to(device)
+model.load_state_dict(torch.load("model_4173183967.pth", weights_only=False))
+
+# Generate
+diff_sample_1 = generation(model, 250, n, 0.5, 4 * n, device=device)
+diff_sample_2 = generation(model, 250, n, 0.5, 4 * n, device=device)
+
+diff_sample = torch.concat([diff_sample_1, diff_sample_2], dim=0)
+fn = torch.norm(diff_sample, p='fro', dim=(1, 2))
+
+fig, ax = plt.subplots()  # width, height in inches
+# Plot histogram
+ax.hist(fn.detach().cpu().numpy(),
+        bins='fd',                     # Freedman–Diaconis rule
+        density=True,                  # or density=True for area=1
+        facecolor='lightblue',                # light gray
+        edgecolor='black', 
+        alpha=0.6,
+        linewidth=0.5, label="Diffusion samples")
+
+# Clean up spines
+ax.spines['top'].set_visible(False)
+ax.spines['right'].set_visible(False)
+ax.spines['left'].set_linewidth(0.5)
+ax.spines['bottom'].set_linewidth(0.5)
+
+# Ticks outside
+ax.tick_params(direction='out', width=0.5)
+
+# Labels (match your manuscript font & size)
+ax.set_xlabel('Frobenius norm', fontsize=9)
+ax.set_ylabel('density', fontsize=9)
+
+plt.tight_layout()
+plt.legend()
+plt.savefig('histogram_test.pdf')
+plt.show()
+</pre>
+
+We cannot generate 500 samples within one single batch due to hardware constraints, so the generation code is split into two. Alternatively, one can modify the `generation` code to generate mini-batches at a time.
+
 # Results
 
 Our paper provides evidence that under computational bottlenecks, the samples provided by polytime algorithms will be different from that of the target distribution. In addition to the histogram provided in the main text of our paper, we have made two new histograms, where `histogram_1.pdf` corresponds to `model_4173183967.pth` and `histogram_2.pdf` corresponds to `model_564395852.pth`. These histograms are provided in the `images` folder.
