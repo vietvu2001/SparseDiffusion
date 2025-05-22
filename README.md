@@ -52,13 +52,21 @@ from denoiser import evaluate_model
 loss_ls = evaluate_model(model)
 </pre>
 
-A few loss lists with this time array are given in the `scoring_losses` folder, named by the convention `numbers_{seed}.txt` format. For the seeded models not given in pre-trained models, one can retrain them using the training code provided above.
+A few loss lists with this time array are given in the `scoring_losses` folder, named by the convention `numbers_{seed}.txt` format. For the seeded models not given in pre-trained models, one can retrain them using the training code provided above. The seeds used are
+
+- 1234
+- 351198240
+- 564395852
+- 1133021819
+- 1388646581
+- 4173183967
 
 # Generate diffusion samples
 
 The function to generate diffusion samples is `generation` in the file `generation.py`. To generate samples using a pre-trained model and make a corresponding histogram, please see for instance
 
 <pre>
+from generation import generation
 model = TestMPNN_3(k, hidden_dim_1=32, hidden_dim_2=16, hidden_dim_3=4, num_layers=10)
 model.to(device)
 model.load_state_dict(torch.load("model_4173183967.pth", weights_only=False))
