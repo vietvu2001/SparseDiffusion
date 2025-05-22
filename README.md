@@ -8,7 +8,7 @@ The models were trained on a single NVIDIA A100 GPU with 84.97 GB memory. The on
 
 # Data distribution
 
-The data distribution is given in `sample_data.py`, with the function `sample_data`. This distribution is described in Equation 16, Section 5 of our paper. 
+The data distribution is given in `sample_data.py`, with the function `sample_data`. This distribution is described in Equation 16, Section 5 of our paper, with `n=350` and `k=20`. 
 
 # Train a new model
 
