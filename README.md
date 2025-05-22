@@ -56,4 +56,4 @@ A few loss lists with this time array are given in the `scoring_losses` folder, 
 
 # Results
 
-Our paper provides evidence that under computational bottlenecks, the samples provided by polytime algorithms will be different from that of the target distribution. In addition to the histogram provided in the main text of our paper, we have made two new histograms, where `histogram_1.pdf` corresponds to `model_4173183967.pth` and `histogram_2.pdf` corresponds to `model_564395852.pth`.
+Our paper provides evidence that under computational bottlenecks, the samples provided by polytime algorithms will be different from that of the target distribution. In addition to the histogram provided in the main text of our paper, we have made two new histograms, where `histogram_1.pdf` corresponds to `model_4173183967.pth` and `histogram_2.pdf` corresponds to `model_564395852.pth`. These histograms are provided in the `images` folder.
