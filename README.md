@@ -4,7 +4,7 @@ This repository is the official implementation of the paper "Computational bottl
 
 # Hardware details and dependencies
 
-The models were trained on a single NVIDIA A100 GPU with 84.97 GB memory. The only dependency is PyTorch, as specified in `dependencies/requirements.txt`.
+The models were trained on a single NVIDIA A100 GPU with 84.97 GB memory. The only dependency is PyTorch, as specified in `dependencies/requirements.txt`, version 2.5.1. The CUDA version is 12.4. The Python version is 3.12.8.
 
 # Data distribution
 
