@@ -111,4 +111,4 @@ We cannot generate 500 samples within one single batch due to hardware constrain
 
 # Results
 
-Our paper provides evidence that under computational bottlenecks, the samples provided by polytime algorithms will be different from that of the target distribution. In addition to the histogram provided in the main text of our paper, we have made two new histograms, where `histogram_1.pdf` corresponds to `model_4173183967.pth` and `histogram_2.pdf` corresponds to `model_564395852.pth`. These histograms are provided in the `images` folder.
+Our paper provides evidence that under computational bottlenecks, the samples provided by polytime algorithms will be different from that of the target distribution. In addition to the histogram provided in the main text of our paper (see Section 6 of paper), we have made two new histograms, where `histogram_1.pdf` corresponds to `model_4173183967.pth` and `histogram_2.pdf` corresponds to `model_564395852.pth`. These histograms are provided in the `images` folder.
